@@ -15,11 +15,11 @@ Undefined symbols for architecture x86_64:
 ld: symbol(s) not found for architecture x86_64
 #endif
 
-double gcd(double a, double b) = delete;
+double gcd(double a, double b);
 // Delete Function: 해당 함수를 호출하는 부분이 컴파일 오류가 발생한다.
 
 int main() {
   printf("%d\n", gcd(2, 10));
 
-  // printf("%lf\n", gcd(2.2, 4.3)); // 암시적 형변환이 허용된다. 하지만 동작하지 않길 원한다.
+  printf("%lf\n", gcd(2.2, 4.3)); // 암시적 형변환이 허용된다. 하지만 동작하지 않길 원한다.
 }
