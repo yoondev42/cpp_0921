@@ -15,6 +15,8 @@ int main() {
   std::cout << std::uppercase << n << std::endl;
   std::cout << std::setw(4) << n << std::endl;
   std::cout << std::setw(4) << std::setfill('0') << n << std::endl;
+
+  printf("%04X\n", n);
   // 입출력 조정자는 함수의 형태로 되어 있다.
 
   // std::cout << std::dec << n << std::endl;
