@@ -10,15 +10,18 @@ struct node {
 typedef struct node Node;
 #endif
 
+// -std=c++11
 struct node {
-  int n;
-  node *next;
+  int n = 42;
+  node *next = NULL;
 };
 
 // C 언어에서는 블록의 최상위에 변수를 정의했지만, C++에서는 제약이 존재하지 않습니다.
 int main() {
   // struct node n;   // C style 구조체 변수 정의
   node n;             // C++에서는 struct를 명시적으로 표현하지 않아도 됩니다.
+  
+  printf("%d\n", n.n);  // ?
 
   // 변수 정의부
   int a = 10;
