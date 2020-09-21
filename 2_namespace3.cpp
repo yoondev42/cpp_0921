@@ -8,6 +8,7 @@
 // printf / std::printf
 
 int main() {
+  printf("Hello, C\n");
   std::printf("Hello, C\n");
 }
 

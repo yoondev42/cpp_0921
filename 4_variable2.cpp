@@ -7,7 +7,7 @@ struct Point {
   int y;
 };
 
-#if 0
+#if 1
 int main() {
   // 일반 변수 타입 - =, () 
   int n1 = 10;

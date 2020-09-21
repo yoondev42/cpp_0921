@@ -42,6 +42,7 @@ int main() {
 
   long d;    // 4? 8?
 
+  // C++11
   long long a; // 8    // C++11
 
 }
