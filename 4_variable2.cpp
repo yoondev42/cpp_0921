@@ -45,6 +45,7 @@ int main() {
 // 강타입 언어
 //  - 암묵적인 타입 변환을 허용하지 않는다.
 
+#if 0
 int main() {
   // int n1 = 3.14;
   // char c1 = 300;
@@ -53,4 +54,26 @@ int main() {
   //  : C++11에서는 컴파일 오류로 알려줍니다.
   int n2 = { 3.14 };
   char c2 = { 300 }; 
+}
+#endif
+
+// auto / decltype - C++11
+// auto: 타입 추론 키워드
+//  => C 언어에서는 다른 의미로 사용되던 키워드입니다.
+// decltype: 기존의 변수와 동일한 타입의 변수를 만들 수 있습니다.
+
+int main() {
+  // int a = 30;
+  // auto a = 3.14;
+
+  // auto a{3.14}; - Direct Initialization
+  double a = { 3.14 };
+  printf("%f\n", a);
+
+  // auto는 반드시 우항이 필요하다.
+  // auto b; - error!
+
+  decltype(a) b = a;
+
+
 }
