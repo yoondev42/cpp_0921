@@ -1,6 +1,5 @@
 // 4_variable2.cpp
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
 struct Point {
   int x;
@@ -46,11 +45,5 @@ int main() {
 //  - 암묵적인 타입 변환을 허용하지 않는다.
 
 int main() {
-  // int n1 = 3.14;
-  // char c1 = 300;
-
-  // Preventing Narrow 
-  //  : C++11에서는 컴파일 오류로 알려줍니다.
-  int n2 = { 3.14 };
-  char c2 = { 300 }; 
+  int n1 = 3.14;
 }
