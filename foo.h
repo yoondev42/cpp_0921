@@ -18,6 +18,10 @@ struct node {
 
 };
 
+// const int N = 100;
+// C  : external linkage
+// C++: internal linkage
+
 #endif
 
 
