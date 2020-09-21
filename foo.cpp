@@ -2,12 +2,31 @@
 
 // 구현부
 #include "foo.h"
+// 상호 호출을 고려해서, 포함하는 것이 좋다.
 
-extern int add(int a, int b) {
+#include <stdio.h>
+
+extern void goo()
+{
+  foo();
+  printf("goo\n");
+}
+
+extern void foo()
+{
+  goo();
+  printf("foo\n");
+}
+
+
+
+extern int add(int a, int b)
+{
   return a + b;
 }
 
-extern int sub(int a, int b) {
+extern int sub(int a, int b)
+{
   return a - b;
 }
 
