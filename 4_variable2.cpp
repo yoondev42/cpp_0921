@@ -74,6 +74,6 @@ int main() {
   // auto b; - error!
 
   decltype(a) b = a;
-
-
+  
+  decltype(b) c;
 }
