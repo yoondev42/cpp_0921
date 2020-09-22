@@ -24,6 +24,8 @@ public:
   Stack(int size);
   ~Stack();
 
+  // push(T)로 사용할 경우, 사용자 정의 객체에 대해서 복사의 비용이 발생할 수 있다.
+  // const T& 사용하면 복사가 일어나지 않는다.
   void push(const T &v);
   T pop();
 

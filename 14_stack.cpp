@@ -1,7 +1,34 @@
 #include <iostream>
 using namespace std;
 
+// C++의 표준 라이브러리에는 'stack'이 이미 제공됩니다.
+// => STL(Standard Template Library)
+// 1) <stack> 헤더를 포함하면 됩니다.
+// 2) 사용자가 버퍼 크기를 전달할 필요가 없습니다. 자동적으로 늘어납니다.
+// 3) c++이 제공하는 stack의 pop 연산은 분리되어 있습니다.
+//     - top() : 가장 최신의 값을 읽습니다.
+//            - 반환값을 복사하는 것이 아니라 참조를 통해 전달하는 것이 가능합니다.
+//     - pop() : 스택에서 최근 값을 제거합니다.
 
+#include <stack>
+
+int main() {
+  std::stack<int> s1;
+
+  s1.push(10);
+  s1.push(20);
+  s1.push(30);
+
+  cout << s1.top() << endl;
+  s1.pop();
+
+  cout << s1.top() << endl;
+
+}
+
+
+
+#if 0
 #include "stack2.h"
 
 struct Complex {};
@@ -17,6 +44,7 @@ int main() {
 
   cout << s2.pop() << endl;
 }
+#endif
 
 
 #if 0
