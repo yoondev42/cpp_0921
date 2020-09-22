@@ -6,7 +6,6 @@
 #include <iostream>
 using namespace std;
 
-
 #if 0
 void add(int ar, int ai, int br, int bi) {
   int sum_r = ar + br;
@@ -41,6 +40,8 @@ int main() {
 }
 #endif
 
+#if 0
+
 // 새로운 복소수 타입을 설계하자.
 // => 프로그램에 필요한 타입을 먼저 설계하고, 해당 타입을 이용해서 프로그래밍을 하는 것
 struct Complex {
@@ -60,4 +61,57 @@ int main() {
 
   Complex ret = add(a, b);
   cout << ret.re << "+" << ret.im << "i" << endl;
+}
+
+#endif
+
+// 생성자, 소멸자, 멤버변수, 멤버함수, 접근지정자
+class Complex
+{
+public:
+  Complex()
+  {
+    re = 0;
+    im = 0;
+  }
+
+  Complex(int r, int i)
+  {
+    re = r;
+    im = i;
+  }
+
+  // void add(const Complex& c) {
+  //   re += c.re;
+  //   im += c.im;
+  // }
+  Complex add(const Complex &c)
+  {
+    // 1. NRVO(Named Return Value Optimaization)
+    Complex ret(re + c.re, im + c.im);
+    return ret;
+
+    // 2. RVO(Return Value Optimaization) => 위의 코드보다 복사가 덜 일어납니다.
+    return Complex(re + c.re, im + c.im);
+  }
+
+  void print()
+  {
+    std::cout << re << " + " << im << "i" << std::endl;
+  }
+
+private:
+  int re;
+  int im;
+};
+
+int main()
+{
+  Complex c1(1, 1); // 1 + 1i
+  Complex c2(1, 3); // 1 + 3i
+
+  // c1.add(c2);
+  Complex c3 = c1.add(c2);
+
+  c3.print();
 }
