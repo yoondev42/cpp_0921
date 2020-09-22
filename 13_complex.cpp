@@ -42,6 +42,7 @@ int main() {
 #endif
 
 // 새로운 복소수 타입을 설계하자.
+// => 프로그램에 필요한 타입을 먼저 설계하고, 해당 타입을 이용해서 프로그래밍을 하는 것
 struct Complex {
   int re;
   int im;  
@@ -52,6 +53,7 @@ Complex add(const Complex& a, const Complex& b) {
   return ret;
 }
 
+// 객체(object) - 새로운 타입의 인스턴스
 int main() {
   Complex a = { 1, 1 };   // 1 + 1i
   Complex b = { 2, 2 };   // 2 + 2i
