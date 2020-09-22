@@ -16,7 +16,9 @@ int main() {
   p = 0;
   p2 = 0;
 
-  bool b = nullptr;
+  // bool b = nullptr;
+  // bool에 대해서 false로 판단되는 암묵적인 캐스팅은 허용하지만, 경고는 발생한다.
+  bool b(nullptr);
 
 
 }
