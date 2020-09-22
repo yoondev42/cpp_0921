@@ -15,6 +15,7 @@ using namespace std;
 //    3. const_cast   => 상수성 제거를 위해 사용합니다.
 //    4. reinterpret_cast => 메모리를 재해석할 때 사용합니다. C의 캐스팅과 유사합니다.
 
+#if 0
 int main() {
   int n = 10;
   // double* p = (double *)&n; // OK!
@@ -27,6 +28,7 @@ int main() {
   // int* p = static_cast<int*>(malloc(sizeof(int) * 10));
 
 }
+#endif
 
 
 
@@ -40,11 +42,19 @@ int main() {
 #endif
 
 
-#if 0
+#if 1
 int main() {
   const int c = 30;
 
-  int* p = (int *)&c;
+  // int* p = (int *)&c;
+
+  // error: static_cast from 'const int *' to 'int *' is not allowed
+  // int* p = static_cast<int*>(&c);
+
+  // error: reinterpret_cast from 'const int *' to 'int *' casts away qualifiers
+  // int* p = reinterpret_cast<int*>(&c);
+
+  int* p = const_cast<int*>(&c);
 
   *p = 24;
 
