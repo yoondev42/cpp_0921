@@ -4,6 +4,51 @@ using namespace std;
 //  => Last In First out(후입선출) 방식의 자료 구조 입니다.
 
 
+// Version 5. Stack 타입 - 초기화가 자동으로 수행되도록 합시다.
+//                      => Constructor(생성자) 도입
+
+class Stack {
+private:  
+  int buff[10];
+  int top;
+
+public:
+  // 생성자: 객체가 생성되는 시점에 호출되는 함수
+  // 1) 함수 이름이 클래스 이름과 동일합니다.
+  // 2) 반환 값이 없고, 반환 타입를 표현하지 않습니다.
+  // 3) 인자가 없어도 되고, 있어도 됩니다.
+  // => 객체가 생성 후에 바로 사용될 수 있도록 준비한다.
+  Stack() {
+    cout << "객체가 생성되는 시점에 자동적으로 호출됩니다." << endl;
+    top = 0;
+  }
+
+  void push(int v) {
+    buff[top++] = v;
+  }
+
+  int pop() {
+    return buff[--top];
+  }
+};
+
+int main() {
+  cout << "Stack s1, s2 생성 전" << endl;
+  Stack s1, s2;
+  cout << "Stack s1, s2 생성 후" << endl;
+  
+  s1.push(10);
+  s1.push(20);
+  s1.push(30);
+
+  // s1.top = 10;  // !?!?!?!?!?!?!
+  
+  cout << s1.pop() << endl;
+  cout << s1.pop() << endl;
+  cout << s1.pop() << endl;
+}
+
+#if 0
 // Version 4. Stack 타입 - Stack의 상태를 push / pop이 통해서가 아니라, 직접 변경하면 문제가 발생합니다.
 //                        "정보 은닉" => 접근 지정자(private / public)
 
@@ -47,7 +92,9 @@ int main() {
   // s2.top = 0;
   s1.init();
   s2.init();
-
+  // Stack을 사용하기 위해서는 반드시 위의 함수가 호출되어야 합니다.
+  //  => 자동으로 호출되도록 할 수 있을까?
+  
   s1.push(10);
   s1.push(20);
   s1.push(30);
@@ -58,6 +105,7 @@ int main() {
   cout << s1.pop() << endl;
   cout << s1.pop() << endl;
 }
+#endif
 
 #if 0
 // Version 3. Stack 타입 - 멤버 함수 도입
