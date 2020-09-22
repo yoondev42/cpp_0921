@@ -5,20 +5,19 @@
 #ifndef STACK_H
 #define STACK_H
 
-class Stack {
+class Stack
+{
 private:
-  int* buff;
+  int *buff;
   int top;
 
 public:
   Stack();
   Stack(int size);
   ~Stack();
-  
 
+  void push(int v);
+  int pop();
 };
-
-
-
 
 #endif

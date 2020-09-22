@@ -23,3 +23,13 @@ Stack::~Stack()
   std::cout << "~Stack()" << std::endl;
   delete[] buff;
 }
+
+void Stack::push(int v)
+{
+  buff[top++] = v;
+}
+
+int Stack::pop()
+{
+  return buff[--top];
+}
