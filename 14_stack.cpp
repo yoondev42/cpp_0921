@@ -2,6 +2,24 @@
 using namespace std;
 
 
+#include "stack2.h"
+
+struct Complex {};
+
+int main() {
+  Stack<int> s1;
+  Stack<double> s2;
+  Stack<Complex> s3;
+
+  s2.push(3.14);
+  s2.push(4.15);
+  s2.push(10.4);
+
+  cout << s2.pop() << endl;
+}
+
+
+#if 0
 // stack 만들기
 //  => Last In First out(후입선출) 방식의 자료 구조 입니다.
 
@@ -17,9 +35,7 @@ int main() {
   s1.push(10);
   cout << s1.pop() << endl;
 }
-
-
-
+#endif
 
 
 
