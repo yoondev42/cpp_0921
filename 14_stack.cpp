@@ -4,6 +4,41 @@ using namespace std;
 //  => Last In First out(후입선출) 방식의 자료 구조 입니다.
 
 
+// Version 3. Stack 타입
+struct Stack {
+  // 멤버 변수
+  int buff[10];
+  int top;
+
+  // 구조체 내부의 필드값을 변경하는 함수를 구조체 내부에 둘 수 있습니다.
+  // => push / pop을 호출한 객체의 필드에 암묵적으로 접근하는 것이 가능합니다.
+  // 멤버 함수(메소드 - Method)
+  void push(int v) {
+    buff[top++] = v;
+  }
+
+  int pop() {
+    return buff[--top];
+  }
+};
+
+int main() {
+  Stack s1, s2;
+  // 사용하기 전에 초기화가 필요합니다.
+  s1.top = 0;
+  s2.top = 0;
+
+  s1.push(10);
+  s1.push(20);
+  s1.push(30);
+  
+  cout << s1.pop() << endl;
+  cout << s1.pop() << endl;
+  cout << s1.pop() << endl;
+}
+
+
+#if 0
 // Version 2. Stack 타입
 struct Stack {
   int buff[10];
@@ -32,8 +67,7 @@ int main() {
   cout << pop(&s1) << endl;
   cout << pop(&s1) << endl;
 }
-
-
+#endif
 
 
 
