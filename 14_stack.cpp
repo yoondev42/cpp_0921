@@ -23,7 +23,6 @@ int main() {
   s1.pop();
 
   cout << s1.top() << endl;
-
 }
 
 
