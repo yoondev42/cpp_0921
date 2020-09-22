@@ -9,8 +9,8 @@ using namespace std;
 
 class Stack {
 private:  
-  int buff[10];
-  int top;
+  int* buff;
+  int  top;
 
 public:
   // 생성자: 객체가 생성되는 시점에 호출되는 함수
@@ -18,8 +18,20 @@ public:
   // 2) 반환 값이 없고, 반환 타입를 표현하지 않습니다.
   // 3) 인자가 없어도 되고, 있어도 됩니다.
   // => 객체가 생성 후에 바로 사용될 수 있도록 준비한다.
+
+  // Stack s;
   Stack() {
     cout << "객체가 생성되는 시점에 자동적으로 호출됩니다." << endl;
+    buff = new int[10];
+    top = 0;
+  }
+
+  // 사용자가 Stack의 크기를 결정하도록 하고 싶다.
+  // 사용자가 전달한 인자의 크기를 생성자를 통해서 전달 받을 수 있습니다.
+
+  // Stack s(64);
+  Stack(int size) {
+    buff = new int[size];
     top = 0;
   }
 
@@ -34,7 +46,9 @@ public:
 
 int main() {
   cout << "Stack s1, s2 생성 전" << endl;
-  Stack s1, s2;
+  Stack s1(64), s2(32);
+  Stack s3;
+
   cout << "Stack s1, s2 생성 후" << endl;
   
   s1.push(10);
