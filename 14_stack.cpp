@@ -7,12 +7,27 @@ using namespace std;
 // Version 5. Stack 타입 - 초기화가 자동으로 수행되도록 합시다.
 //                      => Constructor(생성자) 도입
 
+// 생성자를 통해서 동적 메모리 할당 하였기 때문에, '더 이상 객체가 사용되지 않을 때'
+// 동적 메모리 할당한 메모리는 해지되어야 합니다.
+//  => 객체가 더 이상 사용되지 않을 때 약속된 함수가 호출 됩니다.
+//  => Destructor(소멸자)
+
 class Stack {
 private:  
   int* buff;
   int  top;
 
 public:
+  // 소멸자
+  // 1. ~클래스이름() 입니다.
+  // 2. 반환 타입 표기가 없습니다.
+  // 3. 인자를 가질 수 없습니다.
+  // 4. 객체가 파괴되는 시점에 호출됩니다.
+  ~Stack() {
+    cout << "~Stack()" << endl;
+    delete[] buff;
+  }
+
   // 생성자: 객체가 생성되는 시점에 호출되는 함수
   // 1) 함수 이름이 클래스 이름과 동일합니다.
   // 2) 반환 값이 없고, 반환 타입를 표현하지 않습니다.
@@ -60,6 +75,8 @@ int main() {
   cout << s1.pop() << endl;
   cout << s1.pop() << endl;
   cout << s1.pop() << endl;
+
+  cout << "함수 종료" << endl;
 }
 
 #if 0
