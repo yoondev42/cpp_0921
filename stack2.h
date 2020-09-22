@@ -12,6 +12,12 @@
 // 핵심: 일반적인 클래스는 헤더와 소스로 분리하는 것이 가능합니다.
 // => 템플릿 클래스는 오직 헤더를 통해서만 제공해야 합니다.
 
+
+// Stack: class template
+// => Stack<int>    : class type
+// => Stack<double> : class type
+
+template <typename T>
 class Stack
 {
 public:
@@ -23,34 +29,39 @@ public:
   int pop();
 
 private:
-  int *buff;
+  T *buff;
   int top;
 };
 
-Stack::Stack()
+template <typename T>
+Stack<T>::Stack()
 {
-  buff = new int[10];
+  buff = new T[10];
   top = 0;
 }
 
-Stack::Stack(int size)
+template <typename T>
+Stack<T>::Stack(int size)
 {
-  buff = new int[size];
+  buff = new T[size];
   top = 0;
 }
 
-Stack::~Stack()
+template <typename T>
+Stack<T>::~Stack()
 {
   std::cout << "~Stack()" << std::endl;
   delete[] buff;
 }
 
-void Stack::push(int v)
+template <typename T>
+void Stack<T>::push(int v)
 {
   buff[top++] = v;
 }
 
-int Stack::pop()
+template <typename T>
+int Stack<T>::pop()
 {
   return buff[--top];
 }
