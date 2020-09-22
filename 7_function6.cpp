@@ -56,6 +56,10 @@ auto goo() -> int(*)[3] {
   return arr;
 }
 
+template <typename T>
+auto square(T a) -> T {
+  return a * a;
+}
 
 int main() {
   int arr[3] = { 1, 2, 3 };
