@@ -55,8 +55,10 @@ int main() {
   // int* p = reinterpret_cast<int*>(&c);
 
   int* p = const_cast<int*>(&c);
+  // 타입에 대한 const를 제거하는 목적으로만 사용해야 합니다.
 
-  *p = 24;
+  // *p = 24;
+  // => 상수에 대한 메모리를 접근해서 변경하는 동작은 미정의 동작
 
   cout << *p << endl;
   cout << c << endl;
