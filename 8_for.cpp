@@ -6,7 +6,36 @@ int foo() {
   return 42;
 }
 
+enum State {
+  SUCCESS,
+  FAILED
+};
+
+State goo() {
+  return SUCCESS;
+}
+
 int main() {
+  State state = goo();
+  switch (state) {
+    case SUCCESS:
+      cout << "success" << endl;
+      break;
+    case FAILED:
+      cout << "failed" << endl;
+      break;
+  }
+
+  // C++17 - switch-case with initializer
+  switch (State state = goo(); state) {
+    case SUCCESS:
+      cout << "success" << endl;
+      break;
+    case FAILED:
+      cout << "failed" << endl;
+      break;
+  }
+
   int ret = foo();
   if (ret == 0) {
     printf("ret가 0일때의 동작\n");
@@ -19,6 +48,9 @@ int main() {
     printf("ret2가 0일때의 동작\n");
   }
   // printf("ret: %d\n", ret2);  - ret2는 if 블록을 벗어나면 파괴된다.
+
+  
+
 }
 
 
