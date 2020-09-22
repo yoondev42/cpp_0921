@@ -1,12 +1,29 @@
 #include <iostream>
 using namespace std;
+
+
 // stack 만들기
 //  => Last In First out(후입선출) 방식의 자료 구조 입니다.
 
 // Version 6. 선언과 구현의 분리
 //            => 헤더 파일과 소스 파일로 분리하는 방법을 이해해야 합니다.
 
+// g++ 14_stack.cpp stack.cpp
+#include "stack.h"
 
+int main() {
+  Stack s1;
+
+  s1.push(10);
+  cout << s1.pop() << endl;
+}
+
+
+
+
+
+
+#if 0
 // Version 5. Stack 타입 - 초기화가 자동으로 수행되도록 합시다.
 //                      => Constructor(생성자) 도입
 //                      => Destructor(소멸자) 도입
@@ -63,6 +80,7 @@ public:
   }
 };
 
+
 int main() {
   cout << "Stack s1, s2 생성 전" << endl;
   Stack s1(64), s2(32);
@@ -82,6 +100,7 @@ int main() {
 
   cout << "함수 종료" << endl;
 }
+#endif
 
 #if 0
 // Version 4. Stack 타입 - Stack의 상태를 push / pop이 통해서가 아니라, 직접 변경하면 문제가 발생합니다.
