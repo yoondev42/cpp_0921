@@ -42,16 +42,23 @@ void foo() {
   // free(p); // 더이상 필요하지 않을 때 해지한다.
 
   // char* p = new char[64];
-
-
-
   // C++에서는 동적 메모리 할당을 위한 새로운 연산자가 도입되었습니다.
   // malloc -> new
   // free   -> delete
 
+  // int*
   int* p2 = new int;
   delete p2;
 
+  // int*
+  int* p = new int[64];
+  // delete 통해 전달된 메모리가 연속된 메모리 인지, 단일 메모리인지 알 수 없다.
+  // 연속된 메모리인 경우 
+  // delete p;  // 누수가 발생합니다.
+  delete[] p;   // !!
+
+  // delete: 단일 메모리
+  // delete[]: 연속된 메모리
 }
 
 int main() {
