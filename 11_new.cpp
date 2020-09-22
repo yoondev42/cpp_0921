@@ -28,13 +28,29 @@ int data[10000]; // = { 1, 2, 3, 4, 5, };
 //    - 할당과 해지의 비용이 크다.
 //    - 메모리 누수의 위험성이 있다.
 
+// 1) malloc/free는 함수이지만 new/delete는 연산자 입니다.
+// 2) malloc은 size를 전달하지만, new는 타입을 전달합니다.
+// 3) new는 캐스팅이 필요하지 않습니다.
+// 4) free를 통해 해지하는 것이 아니라, delete를 통해 해지하면 됩니다.
+
 void foo() {
   // char b;
   // vs
   // char arr[1000];
 
-  char* p = static_cast<char*>(malloc(sizeof(char) * 64));
-  free(p); // 더이상 필요하지 않을 때 해지한다.
+  // char* p = static_cast<char*>(malloc(sizeof(char) * 64));
+  // free(p); // 더이상 필요하지 않을 때 해지한다.
+
+  // char* p = new char[64];
+
+
+
+  // C++에서는 동적 메모리 할당을 위한 새로운 연산자가 도입되었습니다.
+  // malloc -> new
+  // free   -> delete
+
+  int* p2 = new int;
+  delete p2;
 
 }
 
