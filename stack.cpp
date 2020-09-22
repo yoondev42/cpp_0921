@@ -5,7 +5,6 @@
 #include <iostream>
 
 // 2. 생성자, 소멸자, 멤버 함수에 대한 구현을 제공한다.
-
 Stack::Stack()
 {
   buff = new int[10];
