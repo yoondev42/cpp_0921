@@ -11,7 +11,7 @@ int main() {
 
   // C++11 - ranged for
   //  Java, C#, Swift, Kotlin ...
-  for (int n : x) {
+  for (auto n : x) {
     cout << n << endl;
   }
 }
