@@ -17,20 +17,59 @@ public:
     cout << x << ", " << y << endl;
   }
 
-// private:
+  void set(int a, int b) {
+    x = a;
+    y = b;
+  }
+
+private:
   int x;
   int y;
 };
 
+class Rect {
+public:
+  Rect(int a = 0, int b = 0, int c = 0, int d = 0)
+   : x(a), y(b), w(c), h(d) {}
+
+  int getArea() const {
+    return w * h;
+  }
+
+private:
+  int x, y, w, h;
+};
+
+void printArea(const Rect& r) {
+  cout << r.getArea() << endl;
+  // const&로 참조되는 객체에 대해서, 오직 상수 멤버 함수만 호출 가능하다.
+}
+
+int main() {
+  Rect r(0, 0, 100, 30);
+  // cout << r.getArea() << endl;
+  printArea(r);
+}
+
+
 // 상수 멤버 함수는 왜 필요한가?
+//  1) 상수 객체는 오직 상수 멤버 함수만 호출 가능하다.
+//  2) const& 참조되는 객체는 오직 '상수 멤버 함수'만 호출 가능하다.
+
+#if 0
 int main() {
   // const int x = 10;
 
   const Point p(10, 20);  // 상수 객체
   // p.x = 20;
   // 1) 상수 객체는 멤버 데이터의 변경이 불가능합니다.
-  cout << p.x << endl;
+  // 2) 상수 객체는 오직 상수 멤버 함수에 대해서만 호출 가능합니다.
+
+  // p.set(10, 20);
+  // cout << p.x << endl;
+  p.print();
 
   
   // p.x = 30;
 }
+#endif
