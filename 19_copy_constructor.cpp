@@ -4,6 +4,7 @@ using namespace std;
 //   복사 생성자
 //  1) 객체를 만들 때 자신의 타입으로 초기화하는 경우
 //  2) 객체를 call by value로 사용할 경우
+//  3) 함수가 객체를 값으로 반환할 경우
 
 // 복사 생성자가 언제 호출되는가?
 class User {
@@ -16,17 +17,33 @@ public:
 
 User p;   // 전역 객체
 
-User& foo() {
+// RVO - 값으로 반환을 해도, 불필요한 임시 객체 생성을 하지 않는다.
+User foo() {
   return p;
 }
 
 // User()  - 전역 객체 생성자
 // User(const User&) - 반환 객체(임시 객체) 복사 생성자를 통해 생성
+// User(const User&)
+// ~User()
 // ~User()           - 임시 객체가 파괴된다.
 // ~User() - 전역 객체 소멸자
 
+
+// 1. User& foo() {}
+// User()
+// User(const User&)
+// ~User()
+// ~User()
+
+// 2. User foo() {}
+// User()
+// User(const User&)
+// ~User()
+// ~User()
+
 int main() {
-  foo();
+  User u = foo();
 }
 
 
