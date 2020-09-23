@@ -12,7 +12,7 @@ public:
   }
   // const int x;
   //  : 반환 타입을 int*가 아니라 const int* 로 해야합니다.
-
+  
   void foo() {             // 1
     cout << "foo" << endl;
   }
@@ -22,7 +22,7 @@ public:
   }
 
   void goo() const;
-  
+
 private:
   int x;
 };
