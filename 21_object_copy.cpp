@@ -7,7 +7,43 @@ using namespace std;
 // => 반드시! 복사 생성자를 재정의 해야 한다.
 // 1) 깊은 복사(Deep copy)
 // 2) 참조 계수를 사용한 복사 기술
+//   1. 자원의 참조 계수를 관리하기 위한 별도의 카운트 변수가 필요하다.
+//   2. 복사 생성자에서 참조 계수를 증가
+//   3. 소멸자에서 참조 계수를 감소
+// 3) 복사 금지
+// 4) 소유권 이전 - Modern C++
+//               "move" / rvalue reference
 
+class Person {
+public:
+  Person(const char* n, int a) : age(a) {
+    name = new char[strlen(n) + 1];
+    strcpy(name, n);
+  }
+
+  ~Person() {  
+    delete[] name;  
+  }
+
+  // 구현을 제공하지 않고, 선언만 제공한다.
+  // => 링크 오류가 발생합니다.
+  // => C++11 delete function
+  Person(const Person&) = delete;
+
+private:
+  char* name;
+  int age;
+};
+
+int main() {
+  Person p1("Tom", 42);
+  // Person p2(p1);
+  // compile error!
+}
+
+
+
+#if 0
 class Person {
 public:
   Person(const char* n, int a) : age(a) {
@@ -41,7 +77,7 @@ int main() {
   Person p2(p1);
   Person p3(p1);
 }
-
+#endif
 
 #if 0
 class Person {
