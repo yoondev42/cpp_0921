@@ -2,6 +2,70 @@
 using namespace std;
 // 19_copy_constructor.cpp
 //   복사 생성자
+//  1) 객체를 만들 때 자신의 타입으로 초기화하는 경우
+//  2) 객체를 call by value로 사용할 경우
+
+// 복사 생성자가 언제 호출되는가?
+class User {
+public:
+  User() { cout << "User()" << endl; }
+  User(const User&) { cout << "User(const User&)" << endl; }
+  ~User() { cout << "~User()" << endl; }
+};
+
+
+User p;   // 전역 객체
+
+User& foo() {
+  return p;
+}
+
+// User()  - 전역 객체 생성자
+// User(const User&) - 반환 객체(임시 객체) 복사 생성자를 통해 생성
+// ~User()           - 임시 객체가 파괴된다.
+// ~User() - 전역 객체 소멸자
+
+int main() {
+  foo();
+}
+
+
+// Call by value
+//  1. 복사본에 추가적인 메모리 할당
+//  2. 복사 생성자, 소멸자에 호출에 따른 성능 저하
+// void foo(User user) {
+// }
+#if 0
+void foo(const User& user) {
+}
+
+int main() {
+  User user;  // User()
+  foo(user);  // User(const User&)
+              // ~User()
+              // ~User()
+}
+#endif
+
+
+#if 0
+int main() {
+  User u1;      // 기본 생성자
+  
+  User u2(u1);  // 복사 생성자
+  User u3 = u1; // 복사 생성자
+
+  User u4{u1};  // 복사 생성자
+  User u5 = {u1}; // 복사 생성자
+}
+#endif
+
+
+
+
+
+
+
 
 // 사용자가 생성자를 제공하지 않을 경우
 // 1. 복사 생성자
@@ -13,6 +77,7 @@ using namespace std;
 // 사용자가 복사 생성자만 제공한 경우
 //  => 기본 생성자 X, 복사 생성자 X
 
+#if 0
 class Point {
 public:
   // Point(): Point(0, 0) {}               // 1
@@ -49,3 +114,4 @@ int main() {
 
   p4.print();
 }
+#endif
