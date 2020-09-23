@@ -64,7 +64,6 @@ int main() {
 //    Car::count  - 클래스 이름을 통해 접근 가능하다. - 더 선호된다.
 //    c.count     - 객체를 통해 접근 가능하다.
 
-
 #if 0
 int main() {
   Car c1;
