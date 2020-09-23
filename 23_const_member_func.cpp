@@ -20,9 +20,17 @@ public:
   void foo() const {       // 2
     cout << "foo-const" << endl;
   }
+
+  void goo() const;
 private:
   int x;
 };
+
+// 상수 멤버 함수를 외부 정의할 때는 반드시 const를 명시해야 합니다.
+void Point::goo() const {
+
+}
+
 
 int main() {
   Point p;
@@ -34,7 +42,6 @@ int main() {
   const Point p2 = Point();
   p2.foo();    // 2
 }
-
 
 
 #if 0
