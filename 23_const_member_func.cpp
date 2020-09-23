@@ -22,6 +22,7 @@ public:
   }
 
   void goo() const;
+  
 private:
   int x;
 };
@@ -30,7 +31,6 @@ private:
 void Point::goo() const {
 
 }
-
 
 int main() {
   Point p;
