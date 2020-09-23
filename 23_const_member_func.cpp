@@ -2,7 +2,42 @@
 using namespace std;
 // 23_const_member_function
 // => 상수 멤버 함수
+//   1) 상수 멤버 함수 안에서는 모든 멤버 데이터는 상수 취급된다.
+//   2) 동일한 이름으로 상수 멤버 함수와 비상수 멤버 함수를 동시에 제공하는 것이 가능합니다.
 
+class Point {
+public:
+  const int* get_address_x() const {
+    return &x;
+  }
+  // const int x;
+  //  : 반환 타입을 int*가 아니라 const int* 로 해야합니다.
+
+  void foo() {             // 1
+    cout << "foo" << endl;
+  }
+
+  void foo() const {       // 2
+    cout << "foo-const" << endl;
+  }
+private:
+  int x;
+};
+
+int main() {
+  Point p;
+  p.foo();      // 1
+
+  const Point& r = p;
+  r.foo();     //  2
+
+  const Point p2 = Point();
+  p2.foo();    // 2
+}
+
+
+
+#if 0
 class Point {
 public:
   Point(int a, int b) : x(a), y(b) {
@@ -50,6 +85,7 @@ int main() {
   // cout << r.getArea() << endl;
   printArea(r);
 }
+#endif
 
 
 // 상수 멤버 함수는 왜 필요한가?
