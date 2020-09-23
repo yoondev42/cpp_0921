@@ -32,7 +32,41 @@ private:
   int y;
 };
 
+class Rect {
+public:
+  Rect() {
+    cout << "Rect()" << endl;
+  }
 
+  ~Rect() {
+    cout << "~Rect()" << endl;
+  }
+
+private:
+  Point p1;
+  Point p2;
+};
+
+// 클래스가 클래스를 멤버 변수로 포함하는 경우, 멤버 변수의 생성자가 먼저 호출될까? 
+//  => 멤버 객체의 생성자가 먼저 호출된다.
+
+// 클래스가 파괴될 경우, 멤버 변수의 소멸자가 먼저 호출될까?
+//  => 멤버 객체의 소멸자가 나중에 호출된다.
+
+#if 0
+Point()
+Point()
+Rect()
+~Rect()
+~Point()
+~Point()
+#endif
+int main() {
+  Rect r;
+}
+
+
+#if 0
 // Heap에 객체를 생성하고 싶다.
 //  => malloc - 생성자가 호출되지 않습니다.
 //     free   - 소멸자가 호출되지 않습니다.
@@ -53,6 +87,7 @@ int main() {
   delete p4;
   cout << "main() 종료" << endl;
 }
+#endif
 
 #if 0
 int main() {
