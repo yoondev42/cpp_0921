@@ -1,15 +1,27 @@
 
 // 18_initializer_list.cpp
 //  초기화 리스트
+#include <iostream>
+using namespace std;
 
 class Point {
+public:
   Point(int a, int b) : x(a), y(b) {
-
+    cout << "Point(int, int)" << endl;
   }
 
+  // 생성자의 코드에서 중복이 발생할 때, 기존 생성자를 통해 초기화를 수행하고 싶다.
+  //  => C++11 - 위임 생성자
+
+  Point() : Point(0, 0) {
+    cout << "Point()" << endl;
+  }
+
+#if 0
   Point() : x(0), y(0) {
 
   }
+#endif
 
 private:
   int x;
@@ -45,7 +57,7 @@ if (n > 0) {
 #endif
 
 
-
+#if 0
 #include <iostream>
 using namespace std;
 
@@ -95,7 +107,7 @@ private:
 int main() {
   Rect r;
 }
-
+#endif
 
 
 
