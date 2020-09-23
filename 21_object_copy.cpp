@@ -25,10 +25,17 @@ public:
     delete[] name;  
   }
 
-  // 구현을 제공하지 않고, 선언만 제공한다.
-  // => 링크 오류가 발생합니다.
+  
+  
+
+private:  // 복사 생성자를 private로 만들면, 외부에서 복사를 수행할 수 없습니다.
+          // 객체 내부의 멤버 함수 또는 friend 함수에서는 복사가 수행될 수 있기 때문에,
+          // 구현을 제공하지 않고, 선언만 제공하는 것이 좋습니다.
+          // => 링크 오류가 발생합니다.
+  Person(const Person&);
+
   // => C++11 delete function
-  Person(const Person&) = delete;
+  // Person(const Person&) = delete;
 
 private:
   char* name;
@@ -37,7 +44,7 @@ private:
 
 int main() {
   Person p1("Tom", 42);
-  // Person p2(p1);
+  Person p2(p1);
   // compile error!
 }
 
