@@ -14,7 +14,40 @@ using namespace std;
 //        2) 비메모리 자원: 파일, 스레드, 프로세스
 //                      '운영체제의 자원'
 
+// private 소멸자
+//  => 힙에만 객체를 생성하고 싶다.
+class User {
+public:
+  // this: 자기 자신을 가르키는 포인터
+  //   => 멤버 함수에서만 사용할 수 있습니다.
+  void release(/* User* p */) {
+    // delete p;
+    delete this;
+  }
+
+private:
+  ~User() {
+    cout << "~User()" << endl;
+  }
+};
+
+int main() {
+  // User user;
+  // => 소멸자를 private 두면, 스택에 객체를 생성할 수 없다.
+
+  User* p = new User;
+  // delete p;
+  // p->release(p);
+  p->release();
+}
+
+
+
+
+
+
 //     - new -> delete
+#if 0
 class Person
 {
 public:
@@ -32,8 +65,9 @@ public:
 private:
   char *name;
 };
+#endif
 
-#include <stdio.h>
+
 // Unix(Linux) 설계 철학: 모든 것은 '파일'이다.
 //  - 프로세스가 시작될 때, 3개의 파일이 자동으로 오픈되어 있습니다.
 //  0: 키보드          - stdin
@@ -46,6 +80,8 @@ private:
 //  fopen
 //  fclose
 
+#if 0
+#include <stdio.h>
 int main()
 {
   int n;
@@ -68,6 +104,7 @@ int main()
 
   fclose(fp);
 }
+#endif
 
 #if 0
 class Point {
