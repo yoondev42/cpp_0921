@@ -1,5 +1,6 @@
 // 16_constructor
 #include <iostream>
+#include <cstdlib>   // malloc / free
 using namespace std;
 
 // 생성자
@@ -11,13 +12,19 @@ using namespace std;
 class Point {
 public:
   Point() {
+    cout << "Point()" << endl;
     x = 0;
     y = 0;
   }
 
   Point(int a, int b) {
+    cout << "Point(int, int)" << endl;
     x = a;
     y = b;
+  }
+
+  ~Point() {
+    cout << "~Point()" << endl;
   }
 
 private:
@@ -25,6 +32,29 @@ private:
   int y;
 };
 
+
+// Heap에 객체를 생성하고 싶다.
+//  => malloc - 생성자가 호출되지 않습니다.
+//     free   - 소멸자가 호출되지 않습니다.
+//  => new - 힙에 객체를 생성하고, 생성자를 호출한다.
+int main() {
+  cout << "main()" << endl;
+  // 1. malloc
+  Point* p1 = static_cast<Point*>(malloc(sizeof(Point)));
+  free(p1);
+
+  // 2. new
+  Point* p2 = new Point;
+  Point* p3 = new Point(10, 20);
+  Point* p4 = new Point{10, 20};  // C++11
+
+  delete p2;
+  delete p3;
+  delete p4;
+  cout << "main() 종료" << endl;
+}
+
+#if 0
 int main() {
   Point p1(10, 20);
   Point p2{10, 20};  // C++11 Uniform Initialization
@@ -34,5 +64,5 @@ int main() {
   // Point arr[2] = { Point(10, 20), Point(20, 30) }
   // 위처럼 만들었을 경우, 기본 생성자를 호출합니다.
   // 기본 생성자가 없는 경우, 반드시 초기화를 수행해주어야 합니다.
-
 }
+#endif
