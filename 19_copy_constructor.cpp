@@ -17,15 +17,9 @@ public:
 
 User p;   // 전역 객체
 
-// RVO - 값으로 반환을 해도, 불필요한 임시 객체 생성을 하지 않는다.
-User foo() {
-  return p;
-}
 
 // User()  - 전역 객체 생성자
 // User(const User&) - 반환 객체(임시 객체) 복사 생성자를 통해 생성
-// User(const User&)
-// ~User()
 // ~User()           - 임시 객체가 파괴된다.
 // ~User() - 전역 객체 소멸자
 
@@ -39,11 +33,19 @@ User foo() {
 // 2. User foo() {}
 // User()
 // User(const User&)
+// User(const User&)
+// ~User()
 // ~User()
 // ~User()
 
+// RVO - 값으로 반환을 해도, 불필요한 임시 객체 생성을 하지 않는다.
+// clang - -fno-elide-constructors RVO disabled
+User foo() {
+  return p;
+}
+
 int main() {
-  User u = foo();
+  User user = foo();
 }
 
 
