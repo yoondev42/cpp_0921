@@ -44,7 +44,7 @@ private:
 
 int main() {
   Person p1("Tom", 42);
-  Person p2(p1);
+  // Person p2(p1);
   // compile error!
 }
 
