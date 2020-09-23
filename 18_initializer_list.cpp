@@ -11,11 +11,24 @@ public:
   }
 
   // 생성자의 코드에서 중복이 발생할 때, 기존 생성자를 통해 초기화를 수행하고 싶다.
-  //  => C++11 - 위임 생성자
+  //  => C++11 - 위임 생성자(delegating constructor)
+  //   주의: 초기화리스트에서만 사용할 수 있습니다.
 
   Point() : Point(0, 0) {
     cout << "Point()" << endl;
   }
+
+  /*
+  Point() {
+    Point(0, 0);  // 위임 생성자를 호출한 것이 아니라, 임시객체를 생성한 문법입니다.
+    cout << "Point()" << endl;
+  }
+  */
+
+  void print() {
+    cout << x << " " << y << endl;
+  }
+
 
 #if 0
   Point() : x(0), y(0) {
@@ -29,9 +42,10 @@ private:
 };
 
 int main() {
-  Point p(10, 20);
+  // Point p(10, 20);
 
   Point p2;
+  p2.print();
 }
 
 
