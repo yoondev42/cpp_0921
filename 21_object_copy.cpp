@@ -22,10 +22,10 @@ public:
   Person(const Person& rhs) : name(rhs.name), age(rhs.age) {
   }
 #endif
-  Person(const Person& rhs) : age(rhs.age) {
-    name = new char[strlen(rhs.name) + 1];
-    strcpy(name, rhs.name);
-  }
+  // Person(const Person& rhs) : age(rhs.age) {
+  //   name = new char[strlen(rhs.name) + 1];
+  //   strcpy(name, rhs.name);
+  // }
 
 private:
   char* name;
@@ -36,4 +36,6 @@ int main() {
   Person p1("Tom", 42);
 
   Person p2(p1);        // 객체를 '복사 생성자'를 통해 생성한다.
+
+  cout << "main end...\n" << endl;
 }
