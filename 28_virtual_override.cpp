@@ -7,14 +7,39 @@ using namespace std;
 // 함수 오버라이딩
 //   : 부모와 동일한 함수를 자식 클래스에서도 제공하는 것이 가능합니다.
 
+// => 파생 클래스에서 재정의하게 되는 함수는 반드시 '가상 함수'이어야 한다.
 class Animal {
 public:
-  virtual void cry() { cout << "Animal cry" << endl; }  // 1
+  // virtual void cry() { cout << "Animal cry" << endl; }  // 1
+  virtual void cry();
+
+  // 아래 함수는 멤버 함수가 아니기 때문에, 가상 함수가 될 수 없다.
+  static void foo();
+
+  void goo() const;
 };
+
+// animal.cpp
+// 2. 멤버 함수의 선언과 구현을 분리할 경우, virtual 키워드는 선언에만 작성해야 합니다.
+void Animal::cry() {
+
+}
+
+// 2. 정적 멤버 함수의 선언과 구현을 분리할 경우, static 키워드는 선언에만 작성해야 합니다.
+void Animal::foo() {
+
+}
+
+// 2. 상수 멤버 함수의 선언과 구현을 분리할 경우, const 키워드는 선언과 구현 모두 필요합니다.
+void Animal::goo() const {
+
+}
+
 
 // 상속: 부모클래스로부터 멤버 데이터와 멤버 함수를 물려받는다.
 class Dog : public Animal {
 public:
+  // 1) 부모 클래스의 함수가 가상 함수라면, 자식클래스의 함수도 가상함수이다.
   virtual void cry() { cout << "Dog cry" << endl; }     // 2
 };
 
