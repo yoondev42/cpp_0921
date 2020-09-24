@@ -28,8 +28,6 @@ using namespace std;
 // - 객체 지향 설계의 5대 원칙(SOLID), 로버트 마틴 정리
 //  SRP(단일 책임의 원칙), 'OCP(개방 폐쇄의 원칙)', LSP(리스코프 치환 원칙), ISP(인터페이스 분리 원칙), DIP(의존 관계 역전 원칙)
 
-
-
 class Shape {
 public:
   virtual ~Shape() {}
