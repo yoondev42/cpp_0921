@@ -7,8 +7,32 @@
 
 #include <iostream>
 #include <thread>  // C++11
+#include <mutex>   // C++11
 using namespace std;
 
+mutex m;
+
+int n = 0;
+void inc() {
+  for (int i = 0 ; i < 1000000; ++i) {
+    m.lock();
+    n += 1;
+    m.unlock();
+  }
+}
+
+int main() {
+  thread t1(&inc);
+  thread t2(&inc);
+
+  t1.join();
+  t2.join();
+  cout << n << endl;
+}
+
+
+
+#if 0
 void start_routine() {
   cout << "Thread start routine" << endl;
   while (1) {
@@ -18,6 +42,7 @@ void start_routine() {
   }
 }
 
+// g++ 25_thread3.cpp -pthread
 int main() {
   // start_routine();
   thread t(&start_routine);
@@ -27,3 +52,4 @@ int main() {
     this_thread::sleep_for(chrono::seconds(1));
   }
 }
+#endif
