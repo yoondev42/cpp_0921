@@ -16,7 +16,7 @@ int main() {
   // Animal a;
   Dog a;
 
-  a.color = 42; /
+  a.color = 42; 
 }
 
 
