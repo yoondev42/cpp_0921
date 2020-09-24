@@ -12,11 +12,20 @@ using namespace std;
 
 mutex m;
 
+class Car {
+public:
+  static int n;   // 전역 변수와 마찬가지로 '스레드 간에 공유'됩니다.
+                  // => 동기화가 필요하다.
+};
+
+int Car::n = 0;
+
 int n = 0;
 void inc() {
   for (int i = 0 ; i < 1000000; ++i) {
     m.lock();
-    n += 1;
+    // n += 1;
+    Car::n += 1;
     m.unlock();
   }
 }
@@ -27,9 +36,8 @@ int main() {
 
   t1.join();
   t2.join();
-  cout << n << endl;
+  cout << Car::n << endl;
 }
-
 
 
 #if 0
