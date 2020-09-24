@@ -7,6 +7,8 @@ using namespace std;
 // 2. 동종을 보관하는 컨테이너(컬렉션) - 자료구조
 //                 STL
 //                    vector / list / set / map / unoredred_map / stack / queue / deque ...
+//  => 디자인 패턴
+//      "Composite Pattern" / "Decorator Pattern"
 
 class Animal {
 public:
