@@ -64,6 +64,8 @@
     "deque": "cpp",
     "stack": "cpp",
     "thread": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "map": "cpp",
+    "__tree": "cpp"
   }
 }
