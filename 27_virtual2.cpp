@@ -23,6 +23,29 @@ bool is_older_than_10(Animal* d) {
   return d->age > 10;
 }
 
+#include <vector>
+#include <list>
+#include <string>
+#include <map>
+
+// 동일 부모를 가진 다양한 타입을 하나의 컨테이너에서 관리하는 것이 가능하다.
+// => "A", "B"가 동일 부모를 가진다면, 부모의 참조타입을 기반으로 하는 컨테이너를 통해 관리하는 것이 가능하다.
+int main() {
+  Dog d;
+  Cat c;
+
+  list<Animal*> v;  // Cat, Dog
+  v.push_back(&d);
+  v.push_back(&c);
+
+  map<std::string, Animal*> m;
+  m["개"] = &d;
+  m["고양이"] = &c;
+}
+
+
+
+
 #if 0
 int main() {
   Dog d;
