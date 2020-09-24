@@ -63,6 +63,7 @@
     "vector": "cpp",
     "deque": "cpp",
     "stack": "cpp",
-    "thread": "cpp"
+    "thread": "cpp",
+    "list": "cpp"
   }
 }
