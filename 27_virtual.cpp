@@ -11,23 +11,38 @@ public:
 
 class Dog : public Animal {
 public:
-  int color;
+  long color;
 };
 
 class Cat : public Animal {
 public:
+  // std::string address;
+  char* address;
 };
 
 // Downcasting: 부모의 포인터 타입을 자식의 포인터 타입으로 변경하는 것
 int main() {
   Dog d;
-  Animal* p = &d;
+  Cat c;
+  c.address = new char[5];
+  strcpy(c.address, "hello, world");
+
+  Animal* p = &c;
 
   p->age = 42;  // OK! - 부모의 속성입니다.
   
-  p->color = 100; // error!
+  // p->color = 100; // error!
+  // Dog* p2 = p;  // 부모 포인터 타입을 자식 포인터 타입으로 암묵적인 캐스팅은 허용하지 않는다.
 
+  Dog* p2 = static_cast<Dog*>(p);
+  // 부모 포인터 타입을 자식 포인터 타입으로 명시적인 캐스팅이 필요하다.
+  //  - static_cast
 
+  p2->color = 100000000;  // 잘못된 자식 객체의 메모리에 접근하는 것이다. => 미정의 동작
+                    // 잘못된 다운 캐스팅에 대한 위험을 방어하기 위해서는 실행 시간에 타입의 정보를 확인할 수 있어야 한다.
+                    // => RTTI
+
+  cout << c.address << endl;                    
 }
 
 
