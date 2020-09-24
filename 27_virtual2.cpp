@@ -6,7 +6,7 @@ using namespace std;
 // 1. 동종(동일한 기반 클래스 타입을 사용하는 타입)을 처리하는 함수
 // 2. 동종을 보관하는 컨테이너(컬렉션) - 자료구조
 //                 STL
-//                    vector / list / set / map / unoredred_map / stack / queue / deque ...
+//                    array(c++11) / vector / list / set / map / unoredred_map(c++11) / stack / queue / deque ...
 //  => 디자인 패턴
 //      "Composite Pattern" / "Decorator Pattern"
 

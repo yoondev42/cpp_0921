@@ -25,14 +25,20 @@ using namespace std;
 // 상속성: 기존 클래스의 특징을 물려 받아서, 새로운 특징을 추가하여 확장할 수 있다.
 // 다형성
 
-// - 객체 지향 설계의 5대 원칙(SOLID), 로버트 마틴 정리
+// - 객체 지향 설계의 5대 원칙(SOLID), 로버트 C 마틴 정리
 //  SRP(단일 책임의 원칙), 'OCP(개방 폐쇄의 원칙)', LSP(리스코프 치환 원칙), ISP(인터페이스 분리 원칙), DIP(의존 관계 역전 원칙)
 
+// 로버트 C 마틴(엉클 밥) - '클린 시리즈'
+//                    1. 클린 코드 / 2. 클린 아키텍처 / 3. 클린 코더
+
+// '다형성'을 구현하기 위해서는, 자식의 공통된 기능은 부모로부터 비롯되어야 한다.
+// => 자식 클래스는 부모 클래스로 대체할 수 있어야 한다.
+// => Liskov Substitution Principle(LSP)
 class Shape {
 public:
   virtual ~Shape() {}
 
-  virtual void draw() { cout << "Shape draw" << endl; }
+  virtual void draw() { cout << "Shape draw" << endl; } 
 };
 
 class Rect : public Shape {
