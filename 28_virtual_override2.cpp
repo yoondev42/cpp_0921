@@ -8,6 +8,10 @@ using namespace std;
 //    - override를 금지할 수 있습니다.
 //    - 가상 함수에 대해서 final을 사용할 수 있다.
 
+// 정리: "Effective C++"
+//     => 부모의 함수가 가상함수가 아니면, 절대 오버라이드 하면 안된다.
+//      : 항목 36. 상속받은 비가상 함수를 파생 클래스에서 재정의하는 것은 절대 금물! 
+
 class Base {
 public:
   virtual void f1() {}
