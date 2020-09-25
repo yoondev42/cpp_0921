@@ -1,0 +1,26 @@
+a.out:
+(__TEXT,__text) section
+__Z3addii:
+0000000100003f70	pushq	%rbp
+0000000100003f71	movq	%rsp, %rbp
+0000000100003f74	movl	%edi, -0x4(%rbp)
+0000000100003f77	movl	%esi, -0x8(%rbp)
+0000000100003f7a	movl	-0x4(%rbp), %eax
+0000000100003f7d	addl	-0x8(%rbp), %eax
+0000000100003f80	popq	%rbp
+0000000100003f81	retq
+0000000100003f82	nopw	%cs:(%rax,%rax)
+0000000100003f8c	nopl	(%rax)
+_main:
+0000000100003f90	pushq	%rbp
+0000000100003f91	movq	%rsp, %rbp
+0000000100003f94	subq	$0x10, %rsp
+0000000100003f98	movl	$0xa, %edi
+0000000100003f9d	movl	$0x14, %esi
+0000000100003fa2	callq	__Z3addii ## add(int, int)
+0000000100003fa7	xorl	%ecx, %ecx
+0000000100003fa9	movl	%eax, -0x4(%rbp)
+0000000100003fac	movl	%ecx, %eax
+0000000100003fae	addq	$0x10, %rsp
+0000000100003fb2	popq	%rbp
+0000000100003fb3	retq
