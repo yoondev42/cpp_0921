@@ -60,6 +60,9 @@ int main() {
 // pthread_create
 // int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine)(void *), void *arg)
 
+// __cdecl: caller가 스택을 정리한다.
+// __stdcall: callee가 스택을 정리한다.
+//  ret 4
 DWORD WINAPI start_routine(LPVOID arg) {
   printf("Thread start routine...\n");
 
