@@ -7,7 +7,7 @@ using namespace std;
 class Animal
 {
 public:
-  // virtual ~Animal() {}
+  virtual ~Animal() {}
 };
 
 class Dog : public Animal
@@ -33,6 +33,9 @@ void foo(Animal* p) {
   }
 }
 #endif
+
+// 만약 foo로 전달되는 인자 p에 대해서, Animal의 자식 중에 Dog만 전달되는 것이 보장된다면
+// 런타임에 타입을 체크하는 오버헤드가 있는 dynamic_cast 보다, static_cast가 효율적이다.
 void foo(Animal *p)
 {
   // dynamic_cast: '실행 시간에 객체의 타입을 체크'합니다.
