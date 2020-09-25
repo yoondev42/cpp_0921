@@ -4,21 +4,71 @@
 #include <iostream>
 using namespace std;
 
-class Animal {
+class Animal
+{
 public:
-  virtual ~Animal() {}
-
+  // virtual ~Animal() {}
 };
 
-class Dog : public Animal {
+class Dog : public Animal
+{
+public:
+  int color;
 
+  void cry()
+  {
+    cout << "Dog cry" << endl;
+    color = 100;
+  }
 };
+
+#if 0
+void foo(Animal* p) {
+  // p가 Dog 라면
+  if (typeid(*p) == typeid(Dog)) {
+    Dog* pDog = static_cast<Dog*>(p);
+    pDog->cry();
+  } else {
+    cout << "Dog 타입이 아닙니다." << endl;
+  }
+}
+#endif
+void foo(Animal *p)
+{
+  // dynamic_cast: '실행 시간에 객체의 타입을 체크'합니다.
+  //                실제 타입이 아니라면, null을 반환합니다.
+  //  => 가상 함수 테이블에 존재하는 type_info를 이용합니다.
+  //  => 가상 함수가 존재하지 않는 클래스에서는 사용할 수 없다.
+  //   : 'Animal' is not polymorphic
+  Dog *pDog = dynamic_cast<Dog *>(p);
+  if (pDog) {
+    pDog->cry();
+  }
+
+  // static_cast는 실제 객체의 타입을 체크하지 않습니다.
+  //  => 컴파일 타임에 캐스트가 수행됩니다.
+#if 0
+  Dog *pDog = static_cast<Dog *>(p);
+  pDog->cry();
+#endif
+  // Animal 객체를 대상으로 해당 함수가 호출되면, 미정의 동작이 발생합니다.
+}
+
+int main()
+{
+  Animal a;
+  foo(&a); // 6Animal
+
+  Dog d;
+  foo(&d); // 3Dog
+}
 
 // RTTI 정리
 // 1. type_info객체를 typeid(객체) / typeid(클래스)으로 꺼낼 수 있다.
 // 2. typeid(객체): type_info객체는 가상 함수 테이블을 통해 관리됩니다.
-//    객체가 가상 함수 테이블을 가지고 있지 않은 경우, 컴파일러는 변수 타입에 대한 type_info를 제공합니다.
+//    객체가 '가상 함수 테이블'을 가지고 있지 않은 경우, 컴파일러는 변수 타입에 대한 type_info를 제공합니다.
 
+#if 0
 // p = new Dog;
 // p = new Animal;
 void foo(Animal* p) {
@@ -39,11 +89,4 @@ void foo(Animal* p) {
     cout << "p는 Dog 타입입니다." << endl;
   } 
 }
-
-int main() {
-  Animal a;
-  foo(&a);  // 6Animal
-
-  Dog d;
-  foo(&d);  // 3Dog
-}
+#endif
