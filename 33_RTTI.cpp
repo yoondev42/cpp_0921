@@ -57,13 +57,18 @@ void foo(Animal *p)
   // Animal 객체를 대상으로 해당 함수가 호출되면, 미정의 동작이 발생합니다.
 }
 
+// RTTI의 문제점
+// : type_info의 이름이 표준으로 동일하지 않다.
+//  => 많은 프레임워크들은 직접 RTTI를 구현합니다.
+//  => 정적 멤버 데이터(변수) / 정적 멤버 함수를 이용하면 구현하는 것이 가능합니다.
+
 int main()
 {
   Animal a;
-  foo(&a); // 6Animal
+  foo(&a); // 6Animal / class Animal
 
   Dog d;
-  foo(&d); // 3Dog
+  foo(&d); // 3Dog / class Dog
 }
 
 // RTTI 정리
