@@ -8,6 +8,19 @@ using namespace std;
 // 1. 규칙을 먼저 설계한다.
 //   "Car의 블랙박스 카메라가 가져야하는 기능에 대한 규칙(약속)" - 'interface' / protocol
 
+// 인터페이스(interface)라고 부르는게 좋습니다.
+//  1. 멤버 변수를 제공하지 않습니다.
+//  2. 순수 가상 함수가 'public'으로 제공됩니다.
+
+// struct의 기본 접근 지정은 public 입니다.
+struct IBlackBoxCamera {
+  virtual ~IBlackBoxCamera() {}
+
+  virtual void startRecording() = 0;
+  virtual void stopRecording() = 0;
+};
+
+#if 0
 class IBlackBoxCamera {
 public:
   virtual ~IBlackBoxCamera() {}
@@ -15,6 +28,7 @@ public:
   virtual void startRecording() = 0;
   virtual void stopRecording() = 0;
 };
+#endif
 
 class Car {
 public:
@@ -29,6 +43,8 @@ private:
 
 //----------------------
 // 2. 자동차에 연결하기 위한 모든 카메라는 반드시 IBlackBoxCamera 추상 클래스로부터 파생되어야 한다.
+//   => 모든 카메라는 IBlackBoxCamera 인터페이스를 구현해야 합니다.
+
 class Camera : public IBlackBoxCamera {
 public:
   void startRecording() override { cout << "startRecording" << endl; }
@@ -50,10 +66,6 @@ int main() {
   car.setBlackboxCamera(&c2);
   car.startBlackboxCamera();
 }
-
-
-
-
 
 #if 0
 // 문제점
