@@ -19,7 +19,12 @@ public:
     strcpy(buff, rhs.buff);
   }
 
+  // 1. 기존 자원에 대한 해지가 필요한가?
+  // 2. 자기 자신에 대한 대입에 대한 예외 처리
   String& operator=(const String& rhs) {
+    if (&rhs == this)
+      return *this;
+
     delete[] buff;  // !!!
     size = rhs.size;
     buff = new char[size + 1];
@@ -51,4 +56,7 @@ int main() {
   String s3 = "world";    
   s3 = s1;                // String& operator=(const String& s)
   cout << s3 << endl;
+
+  s3 = s3;
+
 }
